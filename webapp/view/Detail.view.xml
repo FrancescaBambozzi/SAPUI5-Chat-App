@@ -9,7 +9,6 @@
 	xmlns:l="sap.ui.layout"
 >
 	<Page
-		title="Detail View"
 		showNavButton="true"
 		navButtonPress=".onNavBack"
 	>

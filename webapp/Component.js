@@ -22,12 +22,12 @@ sap.ui.define([
             oChatsSet.setData({ "contacts": aChatsData });
             this.setModel(oChatsSet, "chatsSet");
 
-            // //SENT MESSAGES
+            //SENT MESSAGES
             var oSentMessages = this.getModel("sentMessagesModel");
             this.setModel(oSentMessages, "sentMessagesSet");
-            // var aSentData = oSentMessages.getData();
-            // oSentMessages.setData({ "sentMessages": aSentData });
-            // this.setModel(oSentMessages, "sentMessagesSet");
+            var aSentData = oSentMessages.getData();
+            oSentMessages.setData({ "sentMessages": aSentData });
+            this.setModel(oSentMessages, "sentMessagesSet");
 
             // var sentMessagesModel = this.getModel("sentMessagesModel").getData();
             // console.log(sentMessagesModel);

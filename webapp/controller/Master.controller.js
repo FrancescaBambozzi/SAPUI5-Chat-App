@@ -17,54 +17,19 @@ sap.ui.define([
             //oninit display the sentMessages of the current contact by applying a filter
             // 1. get the table and its binding items
             var oTable = this.byId("listId");
-            var aBinding = oTable.getBinding("items").oList;
+            // var aBindings = oTable.getBinding("items").oList;
 
-            // 2. get the KEY of the contact {"phone"}
-            for (var i = 0; i < aBinding.length; i++) {
-                var oObject = aBinding[i];
-                var aKeys = Object.keys(oObject);
-                var oObjectKey = aKeys[0]
-            }
+            // // 2. get the KEY of the contact {"phone"}
+            // var oObjectKey;
+            // for (var i = 0; i < aBindings.length; i++) {
+            //     var oObject = aBinding[i];
+            //     var aKeys = Object.keys(oObject);
+            //     oObjectKey = aKeys[0]
+            // }
 
-            // 3. bind sentmessages model to current view
-            var oSentModel = this.getOwnerComponent().getModel("sentMessagesModel");
-            var aSentData = oSentModel.getData();
-
-            var obj;
-
-            //loop over the data and put a message x each contact with a filter on the key of the contact
-            for (var i = 0; i < aSentData.length; i++) {
-                obj = aSentData[i];
-                // each obj in the array as JSON object
-                obj = new JSONModel(obj);
-
-                //create an array 
-
-                //filter on the basis of the contact key
-
-            }
-
-            this.getView().setModel(obj, "sentMessagesSet");
-            console.log(aSentData)
-            //oSentModel.setData({ "sentMessages": aSentData });
-
-
-            //set the model to the view
-            //this.getView().setModel(oSentModel, "sentMessagesSet");
-
-
-
-            // var oViewModel = new JSONModel({
-            //     currency: "EUR"
-            // });
-
-            //console.log(oViewModel);
-            // this.getView().setModel(oViewModel, "view");
-            //oTable.setBindingContext(oSentModel)
-            //oTable.bindAggregation("cells", { path: 'sentMessagesSet>/sentMessages' })
-
-
-            // 4. use a filter with the "phone" key
+            // // 3. bind sentmessages model to current view and filter the sentMessages by objKEY
+            // var oSentModel = this.getOwnerComponent().getModel("sentMessagesModel");
+            // this.getView().setModel(oSentMessages, "sentMessagesSet");
         },
 
         onSearch: function (oEvent) {
@@ -89,7 +54,6 @@ sap.ui.define([
             var oItem = oEvent.getSource();
             var oRouter = this.getOwnerComponent().getRouter();
 
-            //route "name" corresponding to the one set in the descriptor
             //substr the first chr '/' as it's not allowed in URL
             oRouter.navTo("detail", {
                 contactPath: window.encodeURIComponent(oItem.getBindingContext("chatsSet").getPath().substr(1))

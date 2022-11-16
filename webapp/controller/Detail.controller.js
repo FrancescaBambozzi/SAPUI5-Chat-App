@@ -3,7 +3,8 @@ sap.ui.define([
     "sap/ui/core/routing/History",
     "sap/ui/core/format/DateFormat",
     "sap/ui/model/Filter",
-    "sap/ui/model/FilterOperator"
+    "sap/ui/model/FilterOperator",
+    "sap/ui/core/format/DateFormat"
 ], function (
     Controller, History, DateFormat, Filter, FilterOperator
 ) {
@@ -15,9 +16,14 @@ sap.ui.define([
             var oRouter = this.getOwnerComponent().getRouter();
             oRouter.getRoute("detail").attachPatternMatched(this._onObjectMatched, this);
         },
+
+        onAfterRendering: function () {
+            var oSentMessages = this.getOwnerComponent().getModel("sentMessagesModel");
+            this.getView().setModel(oSentMessages, "sentMessagesSet");
+        },
         _onObjectMatched: function (oEvent) {
 
-            //1. access the URL and navigation parameters : arguments
+            //1. access the URL and navigation parameters 
             //2. access nav parameter path and set context to the view
             this.getView().bindElement({
                 path: "/" + window.decodeURIComponent(oEvent.getParameter("arguments").contactPath),
