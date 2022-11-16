@@ -1,0 +1,47 @@
+<mvc:View
+	controllerName="myapp.chatapp.controller.Master"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+>
+	<Page title="Teams Chat">
+		<headerContent>
+			<Button icon="sap-icon://hello-world"/>
+		</headerContent>
+		<content>
+			<List
+				id="listId"
+				items="{
+					path: 'chatsSet>/contacts'
+				}"
+			>
+				<headerToolbar>
+					<Toolbar>
+						<SearchField
+							width="50%"
+							search=".onSearch"
+						/>
+					</Toolbar>
+				</headerToolbar>
+				<items>
+					<ObjectListItem
+						type="Navigation"
+						press=".onPressNavTo"
+						iconDensityAware="true"
+						intro=""
+						introTextDirection="Inherit"
+						number="{
+							parts: [{
+								path: 'sentMessagesSet>/text'
+							}]
+						}"
+						numberState="None"
+						numberTextDirection="Inherit"
+						numberUnit=""
+						title="{chatsSet>contactName}"
+						titleTextDirection="Inherit"
+					/>
+				</items>
+			</List>
+		</content>
+	</Page>
+</mvc:View>

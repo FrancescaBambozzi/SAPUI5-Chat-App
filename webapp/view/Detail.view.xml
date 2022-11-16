@@ -1,0 +1,75 @@
+<mvc:View
+	controllerName="myapp.chatapp.controller.Detail"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+	displayBlock="true"
+	height="100%"
+	busyIndicatorDelay="0"
+	xmlns:l="sap.ui.layout"
+>
+	<Page
+		title="Detail View"
+		showNavButton="true"
+		navButtonPress=".onNavBack"
+	>
+		<HeaderContainer
+			backgroundDesign="Transparent"
+			height=""
+			orientation="Horizontal"
+			scrollStep="300"
+			scrollStepByItem="1"
+			scrollTime="500"
+			showDividers="true"
+			showOverflowItem="true"
+			width=""
+		>
+			<content>
+				<Avatar
+					badgeTooltip=""
+					displayShape="Circle"
+					displaySize="S"
+					imageFitType="Cover"
+					src="{chatsSet>photo}"
+				/>
+				<ObjectHeader title="{chatsSet>contactName}"/>
+			</content>
+		</HeaderContainer>
+		<Panel
+			accessibleRole="Form"
+			backgroundDesign="Translucent"
+			expandAnimation="true"
+			expandable="false"
+			expanded="false"
+			headerText="empty string"
+			height="auto"
+			width="100%"
+		>
+			<content>
+				<List
+					id="idMessagesList"
+					noDataText="{i18n>ObjectCommentNoData}"
+					showSeparators="Inner"
+					items="{
+						path: 'sentMessagesSet>/sentMessages',
+						sorter: {
+							path: 'date',
+							descending: true
+						}
+					}"
+				>
+					<FeedListItem
+						info="{sentMessagesSet>type}"
+						text="{sentMessagesSet>text}"
+						timestamp="{sentMessagesSet>date}"
+					/>
+				</List>
+				<FeedInput post=".onPost"/>
+			</content>
+			<headerToolbar>
+			</headerToolbar>
+			<infoToolbar>
+			</infoToolbar>
+		</Panel>
+	</Page>
+</mvc:View>

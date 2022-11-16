@@ -1,0 +1,13 @@
+{
+  "name": "myapp.chatapp",
+  "version": "1.0.0",
+  "author": "",
+  "description": "SAPUI5 Front End",
+  "scripts": {
+    "start": "ui5 serve -o index.html",
+    "build": "ui5 build"
+  },
+  "devDependencies": {
+    "@ui5/cli": "^2.14.14"
+  }
+}

@@ -1,0 +1,99 @@
+{
+    "_version": "1.47.0",
+    "sap.app": {
+        "id": "myapp.chatapp",
+        "type": "application",
+        "applicationVersion": {
+            "version": "1.0.0"
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "myapp.chatapp.view.App",
+            "type": "XML",
+            "async": false,
+            "id": "app"
+        },
+        "dependencies": {
+            "minUI5Version": "1.93",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.f": {}
+            }
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "myapp.chatapp.i18n.i18n"
+                }
+            },
+            "chatsSetModel": {
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "./model/mockdata/chatsSet.json",
+                "preload": true
+            },
+            "sentMessagesModel": {
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "./model/mockdata/SentMessagesSet.json",
+                "preload": true
+            },
+            "receivedMessagesModel": {
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "./model/mockdata/ReceivedMessagesSet.json",
+                "preload": true
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "type": "View",
+                "viewType": "XML",
+                "path": "myapp.chatapp.view",
+                "controlId": "app",
+                "controlAggregation": "pages"
+            },
+            "routes": [
+                {
+                    "pattern": "",
+                    "name": "master",
+                    "target": "master"
+                },
+                {
+                    "pattern": "detail/{contactPath}",
+                    "name": "detail",
+                    "target": "detail"
+                }
+            ],
+            "targets": {
+                "master": {
+                    "id": "master",
+                    "name": "Master"
+                },
+                "detail": {
+                    "id": "detail",
+                    "name": "Detail"
+                }
+            }
+        },
+        "config": {
+            "fullWidth": true
+        }
+    }
+}
